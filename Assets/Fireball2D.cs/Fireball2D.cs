@@ -7,16 +7,28 @@ public class Fireball2D : MonoBehaviour
     public int damage = 30;
     public float lifeTime = 5f;
 
-    // Цель огненного шара
-    private Transform target;
+    // Направление полёта
+    private Vector2 direction;
 
     // =========================================
-    // ПОЛУЧИТЬ ЦЕЛЬ
+    // УСТАНОВИТЬ НАПРАВЛЕНИЕ
     // =========================================
 
-    public void SetTarget(Transform newTarget)
+    public void SetDirection(Vector2 newDirection)
     {
-        target = newTarget;
+        direction = newDirection.normalized;
+
+        // Поворачиваем огненный шар
+        float angle = Mathf.Atan2(
+            direction.y,
+            direction.x
+        ) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(
+            0,
+            0,
+            angle
+        );
     }
 
     // =========================================
@@ -29,28 +41,15 @@ public class Fireball2D : MonoBehaviour
     }
 
     // =========================================
-    // ПОЛЁТ К ИГРОКУ
+    // ПОЛЁТ ПО ПРЯМОЙ
     // =========================================
 
     private void Update()
     {
-        if (target == null)
-            return;
-
-        Vector2 direction =
-            (target.position - transform.position).normalized;
-
         transform.position +=
-            (Vector3)direction * speed * Time.deltaTime;
-
-        // Поворачиваем шар в сторону игрока
-        float angle = Mathf.Atan2(
-            direction.y,
-            direction.x
-        ) * Mathf.Rad2Deg;
-
-        transform.rotation =
-            Quaternion.Euler(0, 0, angle);
+            (Vector3)direction *
+            speed *
+            Time.deltaTime;
     }
 
     // =========================================
