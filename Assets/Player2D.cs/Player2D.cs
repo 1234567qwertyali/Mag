@@ -16,15 +16,27 @@ public class Player2D : MonoBehaviour
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
 
+    [Header("DEBUG")]
+    public bool showGroundDebug = true;
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool dead;
 
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if (rb == null)
+        {
+            Debug.LogError("❌ На Player нет Rigidbody2D!");
+            return;
+        }
+
         currentHealth = maxHealth;
     }
+
 
     private void Update()
     {
@@ -32,16 +44,27 @@ public class Player2D : MonoBehaviour
             return;
 
         Move();
+
+        // Проверяем землю
         CheckGround();
 
-        // Прыжок через New Input System
+        // Прыжок
         if (Keyboard.current != null &&
-            Keyboard.current.spaceKey.wasPressedThisFrame &&
-            isGrounded)
+            Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            Jump();
+            Debug.Log("SPACE нажат. Grounded = " + isGrounded);
+
+            if (isGrounded)
+            {
+                Jump();
+            }
+            else
+            {
+                Debug.Log("❌ Прыжок невозможен: игрок не на земле!");
+            }
         }
     }
+
 
     // =========================================
     // ДВИЖЕНИЕ
@@ -49,6 +72,9 @@ public class Player2D : MonoBehaviour
 
     private void Move()
     {
+        if (rb == null)
+            return;
+
         float move = 0f;
 
         if (Keyboard.current != null)
@@ -65,12 +91,13 @@ public class Player2D : MonoBehaviour
                 move = 1f;
             }
 
-            // Стрелки
+            // Стрелка влево
             if (Keyboard.current.leftArrowKey.isPressed)
             {
                 move = -1f;
             }
 
+            // Стрелка вправо
             if (Keyboard.current.rightArrowKey.isPressed)
             {
                 move = 1f;
@@ -81,6 +108,7 @@ public class Player2D : MonoBehaviour
             move * moveSpeed,
             rb.linearVelocity.y
         );
+
 
         // Разворот игрока
         if (move > 0)
@@ -93,6 +121,7 @@ public class Player2D : MonoBehaviour
         }
     }
 
+
     // =========================================
     // ПРОВЕРКА ЗЕМЛИ
     // =========================================
@@ -102,6 +131,14 @@ public class Player2D : MonoBehaviour
         if (groundCheck == null)
         {
             isGrounded = false;
+
+            if (showGroundDebug)
+            {
+                Debug.LogWarning(
+                    "⚠️ GroundCheck не назначен в Inspector!"
+                );
+            }
+
             return;
         }
 
@@ -110,7 +147,15 @@ public class Player2D : MonoBehaviour
             groundCheckRadius,
             groundLayer
         );
+
+
+        // Отладка
+        if (showGroundDebug)
+        {
+            // Можно включить/выключить через Inspector
+        }
     }
+
 
     // =========================================
     // ПРЫЖОК
@@ -118,14 +163,20 @@ public class Player2D : MonoBehaviour
 
     private void Jump()
     {
+        if (rb == null)
+            return;
+
         rb.linearVelocity = new Vector2(
             rb.linearVelocity.x,
             jumpForce
         );
+
+        Debug.Log("🦘 ИГРОК ПРЫГНУЛ!");
     }
 
+
     // =========================================
-    // ПОЛУЧЕНИЕ УРОНА ОТ БОССА
+    // ПОЛУЧЕНИЕ УРОНА
     // =========================================
 
     public void TakeDamage(int damage)
@@ -138,7 +189,8 @@ public class Player2D : MonoBehaviour
         Debug.Log(
             "Игрок получил " + damage +
             " урона. HP: " +
-            currentHealth + "/" + maxHealth
+            currentHealth + "/" +
+            maxHealth
         );
 
         if (currentHealth <= 0)
@@ -146,6 +198,7 @@ public class Player2D : MonoBehaviour
             Die();
         }
     }
+
 
     // =========================================
     // СМЕРТЬ
@@ -155,12 +208,16 @@ public class Player2D : MonoBehaviour
     {
         dead = true;
 
-        Debug.Log("ИГРОК УМЕР!");
+        Debug.Log("💀 ИГРОК УМЕР!");
 
-        rb.linearVelocity = Vector2.zero;
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
 
         Destroy(gameObject);
     }
+
 
     // =========================================
     // GIZMOS
@@ -170,7 +227,9 @@ public class Player2D : MonoBehaviour
     {
         if (groundCheck != null)
         {
-            Gizmos.color = Color.green;
+            Gizmos.color = isGrounded
+                ? Color.green
+                : Color.red;
 
             Gizmos.DrawWireSphere(
                 groundCheck.position,
