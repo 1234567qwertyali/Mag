@@ -28,9 +28,11 @@ public class BossMageAI : MonoBehaviour
 
     public int fireballDamage = 30;
 
+
     [Header("EARTH SPIKES")]
     public GameObject earthSpikePrefab;
     public int earthDamage = 40;
+
 
     [Header("LIGHTNING")]
     public GameObject lightningPrefab;
@@ -166,9 +168,11 @@ public class BossMageAI : MonoBehaviour
             return;
         }
 
-        // Если FirePoint назначен —
-        // создаём шар там.
-        // Если нет — создаём из центра босса.
+
+        // =========================================
+        // ТОЧКА СОЗДАНИЯ
+        // =========================================
+
         Vector2 spawnPosition;
 
         if (firePoint != null)
@@ -180,26 +184,54 @@ public class BossMageAI : MonoBehaviour
             spawnPosition = transform.position;
         }
 
-        // Создаём огненный шар
+
+        // =========================================
+        // СОЗДАЁМ ОГНЕННЫЙ ШАР
+        // =========================================
+
         GameObject fireball = Instantiate(
             fireballPrefab,
             spawnPosition,
             Quaternion.identity
         );
 
-        // Получаем скрипт Fireball2D
+
+        // =========================================
+        // ПОЛУЧАЕМ СКРИПТ
+        // =========================================
+
         Fireball2D fireballScript =
             fireball.GetComponent<Fireball2D>();
 
+
         if (fireballScript != null)
         {
-            // Передаём шару игрока
-            fireballScript.SetTarget(player);
+            // =========================================
+            // НАПРАВЛЕНИЕ К ИГРОКУ
+            // =========================================
 
-            // Передаём урон
+            Vector2 direction =
+                (player.position - fireball.transform.position)
+                .normalized;
+
+
+            // =========================================
+            // ПЕРЕДАЁМ НАПРАВЛЕНИЕ
+            // =========================================
+
+            fireballScript.SetDirection(direction);
+
+
+            // =========================================
+            // ПЕРЕДАЁМ УРОН
+            // =========================================
+
             fireballScript.damage = fireballDamage;
 
-            Debug.Log("🔥 Босс выпустил огненный шар!");
+
+            Debug.Log(
+                "🔥 Босс выпустил прямой огненный шар!"
+            );
         }
         else
         {
@@ -227,13 +259,17 @@ public class BossMageAI : MonoBehaviour
 
         Vector2 target = GetAttackPoint();
 
+
         GameObject spike = Instantiate(
             earthSpikePrefab,
             target,
             Quaternion.identity
         );
 
-        Debug.Log("🌍 Босс создал шип земли!");
+
+        Debug.Log(
+            "🌍 Босс создал шип земли!"
+        );
     }
 
 
@@ -254,13 +290,17 @@ public class BossMageAI : MonoBehaviour
 
         Vector2 target = GetAttackPoint();
 
+
         GameObject lightning = Instantiate(
             lightningPrefab,
             target,
             Quaternion.identity
         );
 
-        Debug.Log("⚡ Босс вызвал молнию!");
+
+        Debug.Log(
+            "⚡ Босс вызвал молнию!"
+        );
     }
 
 
@@ -275,14 +315,20 @@ public class BossMageAI : MonoBehaviour
             return transform.position;
         }
 
+
         if (attackPoints == null ||
             attackPoints.Length == 0)
         {
             return player.position;
         }
 
+
         int randomPoint =
-            Random.Range(0, attackPoints.Length);
+            Random.Range(
+                0,
+                attackPoints.Length
+            );
+
 
         return attackPoints[randomPoint].position;
     }
@@ -302,7 +348,11 @@ public class BossMageAI : MonoBehaviour
             attackRange
         );
 
-        // FirePoint
+
+        // =========================================
+        // FIRE POINT
+        // =========================================
+
         if (firePoint != null)
         {
             Gizmos.color = Color.cyan;
@@ -318,7 +368,11 @@ public class BossMageAI : MonoBehaviour
             );
         }
 
-        // Точки атак
+
+        // =========================================
+        // ТОЧКИ АТАК
+        // =========================================
+
         if (attackPoints != null)
         {
             Gizmos.color = Color.yellow;
