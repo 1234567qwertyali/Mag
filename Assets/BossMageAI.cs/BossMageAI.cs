@@ -12,9 +12,6 @@ public class BossMageAI : MonoBehaviour
     public Transform player;
     public float attackRange = 15f;
 
-    [Header("ATTACK POINTS")]
-    public Transform[] attackPoints;
-
     [Header("ATTACK SETTINGS")]
     public float attackCooldown = 2f;
     private bool attacking;
@@ -22,33 +19,54 @@ public class BossMageAI : MonoBehaviour
 
     [Header("🔥 FIREBALL")]
     public GameObject fireballPrefab;
-
-    // Точка, откуда вылетает огненный шар
     public Transform firePoint;
-
     public int fireballDamage = 30;
 
-
-    [Header("EARTH SPIKES")]
+    [Header("🌍 EARTH SPIKES")]
     public GameObject earthSpikePrefab;
+    public Transform earthSpikePoint;
     public int earthDamage = 40;
 
+    public float spikeDistance = 1.5f;
+    public float spikeDelay = 0.3f;
+    public int totalSpikes = 13;
 
-    [Header("LIGHTNING")]
+    [Header("⚡ LIGHTNING")]
     public GameObject lightningPrefab;
+    public Transform lightningPoint;
     public int lightningDamage = 50;
+
+    [Header("GROUND")]
+    public LayerMask groundLayer;
+    public float groundCheckDistance = 0.2f;
 
 
     private void Start()
     {
         currentHealth = maxHealth;
 
+        // Создаём EarthSpikePoint автоматически
+        if (earthSpikePoint == null)
+        {
+            GameObject point = new GameObject("EarthSpikePoint");
+
+            point.transform.SetParent(transform);
+
+            point.transform.localPosition = new Vector3(
+                1.5f,
+                -0.5f,
+                0f
+            );
+
+            earthSpikePoint = point.transform;
+        }
+
         StartCoroutine(BossAI());
     }
 
 
     // =========================================
-    // БОСС ПОЛУЧАЕТ УРОН
+    // 💥 УРОН БОССУ
     // =========================================
 
     public void TakeDamage(int damage)
@@ -72,7 +90,7 @@ public class BossMageAI : MonoBehaviour
 
 
     // =========================================
-    // СМЕРТЬ
+    // 💀 СМЕРТЬ
     // =========================================
 
     private void Die()
@@ -81,14 +99,14 @@ public class BossMageAI : MonoBehaviour
 
         StopAllCoroutines();
 
-        Debug.Log("БОСС УМЕР!");
+        Debug.Log("💀 БОСС УМЕР!");
 
         Destroy(gameObject);
     }
 
 
     // =========================================
-    // ИИ
+    // 🤖 ИИ
     // =========================================
 
     private IEnumerator BossAI()
@@ -114,31 +132,76 @@ public class BossMageAI : MonoBehaviour
 
 
     // =========================================
-    // ВЫБОР АТАКИ
+    // ⚔️ ВЫБОР АТАКИ
     // =========================================
 
     private IEnumerator Attack()
     {
         attacking = true;
 
-        int randomAttack = Random.Range(0, 3);
+        bool grounded = IsPlayerGrounded();
+        bool aboveBoss = IsPlayerAboveBoss();
 
-        switch (randomAttack)
+        // =========================================
+        // ⚡ ИГРОК В ВОЗДУХЕ
+        // =========================================
+
+        if (!grounded && aboveBoss)
         {
-            case 0:
-                FireballAttack();
-                break;
+            // Босс сам выбирает:
+            // 0 = молния
+            // 1 = огненный шар
 
-            case 1:
-                EarthSpikeAttack();
-                break;
+            int randomAttack = Random.Range(0, 2);
 
-            case 2:
+            if (randomAttack == 0)
+            {
                 LightningAttack();
-                break;
+            }
+            else
+            {
+                FireballAttack();
+            }
         }
 
-        yield return new WaitForSeconds(attackCooldown);
+        // =========================================
+        // 🌍 ИГРОК НА ЗЕМЛЕ
+        // =========================================
+
+        else if (grounded)
+        {
+            // Босс сам выбирает:
+            // 0 = земные шипы
+            // 1 = огненный шар
+
+            int randomAttack = Random.Range(0, 2);
+
+            if (randomAttack == 0)
+            {
+                // 13 шипов по 2
+                yield return StartCoroutine(EarthSpikeAttack());
+            }
+            else
+            {
+                // Огненный шар
+                FireballAttack();
+            }
+        }
+
+        // =========================================
+        // 🔥 В ДРУГИХ СЛУЧАЯХ
+        // =========================================
+
+        else
+        {
+            FireballAttack();
+        }
+
+        // =========================================
+        // ⏱ ЗАДЕРЖКА 3 СЕКУНДЫ
+        // =========================================
+
+        yield return new WaitForSeconds(3f);
 
         attacking = false;
     }
@@ -150,44 +213,13 @@ public class BossMageAI : MonoBehaviour
 
     private void FireballAttack()
     {
-        if (fireballPrefab == null)
-        {
-            Debug.LogWarning(
-                "🔥 Не назначен Fireball Prefab!"
-            );
-
+        if (fireballPrefab == null || player == null)
             return;
-        }
 
-        if (player == null)
-        {
-            Debug.LogWarning(
-                "🔥 Босс не знает, где находится Player!"
-            );
-
-            return;
-        }
-
-
-        // =========================================
-        // ТОЧКА СОЗДАНИЯ
-        // =========================================
-
-        Vector2 spawnPosition;
-
-        if (firePoint != null)
-        {
-            spawnPosition = firePoint.position;
-        }
-        else
-        {
-            spawnPosition = transform.position;
-        }
-
-
-        // =========================================
-        // СОЗДАЁМ ОГНЕННЫЙ ШАР
-        // =========================================
+        Vector2 spawnPosition =
+            firePoint != null
+            ? firePoint.position
+            : transform.position;
 
         GameObject fireball = Instantiate(
             fireballPrefab,
@@ -195,81 +227,131 @@ public class BossMageAI : MonoBehaviour
             Quaternion.identity
         );
 
-
-        // =========================================
-        // ПОЛУЧАЕМ СКРИПТ
-        // =========================================
-
-        Fireball2D fireballScript =
+        Fireball2D script =
             fireball.GetComponent<Fireball2D>();
 
-
-        if (fireballScript != null)
+        if (script != null)
         {
-            // =========================================
-            // НАПРАВЛЕНИЕ К ИГРОКУ
-            // =========================================
-
             Vector2 direction =
-                (player.position - fireball.transform.position)
-                .normalized;
+                (player.position -
+                 fireball.transform.position).normalized;
 
+            script.SetDirection(direction);
 
-            // =========================================
-            // ПЕРЕДАЁМ НАПРАВЛЕНИЕ
-            // =========================================
-
-            fireballScript.SetDirection(direction);
-
-
-            // =========================================
-            // ПЕРЕДАЁМ УРОН
-            // =========================================
-
-            fireballScript.damage = fireballDamage;
-
-
-            Debug.Log(
-                "🔥 Босс выпустил прямой огненный шар!"
-            );
+            script.damage = fireballDamage;
         }
-        else
-        {
-            Debug.LogError(
-                "🔥 На Fireball Prefab нет компонента Fireball2D!"
-            );
-        }
+
+        Debug.Log("🔥 Босс выпустил огненный шар!");
     }
 
 
     // =========================================
-    // 🌍 ШИПЫ ЗЕМЛИ
+    // 🌍 ЗЕМНЫЕ ШИПЫ
     // =========================================
 
-    private void EarthSpikeAttack()
+    private IEnumerator EarthSpikeAttack()
     {
         if (earthSpikePrefab == null)
         {
-            Debug.LogWarning(
-                "Не назначен Earth Spike Prefab!"
+            Debug.LogError(
+                "🌍 Earth Spike Prefab не назначен!"
             );
 
-            return;
+            yield break;
         }
 
-        Vector2 target = GetAttackPoint();
+        if (player == null)
+            yield break;
 
 
+        // Определяем сторону игрока
+        float direction =
+            player.position.x > transform.position.x
+            ? 1f
+            : -1f;
+
+
+        // Перемещаем Point перед боссом
+        earthSpikePoint.position = new Vector3(
+            transform.position.x +
+            direction * 1.5f,
+
+            transform.position.y - 0.5f,
+
+            transform.position.z
+        );
+
+
+        // Создаём 13 шипов
+        // По 2 одновременно
+        for (int i = 0; i < totalSpikes; i += 2)
+        {
+            // Первый шип
+            Vector2 position1 = new Vector2(
+                earthSpikePoint.position.x +
+                direction * (i * spikeDistance),
+
+                earthSpikePoint.position.y
+            );
+
+            CreateEarthSpike(position1);
+
+
+            // Второй шип
+            if (i + 1 < totalSpikes)
+            {
+                Vector2 position2 = new Vector2(
+                    earthSpikePoint.position.x +
+                    direction * ((i + 1) * spikeDistance),
+
+                    earthSpikePoint.position.y
+                );
+
+                CreateEarthSpike(position2);
+            }
+
+
+            Debug.Log(
+                "🌍 Шипы: " +
+                Mathf.Min(i + 2, totalSpikes) +
+                "/" +
+                totalSpikes
+            );
+
+
+            // Ждём перед следующими 2 шипами
+            yield return new WaitForSeconds(spikeDelay);
+        }
+
+        Debug.Log("🌍 Все 13 шипов появились!");
+    }
+
+
+    // =========================================
+    // 🌍 СОЗДАНИЕ ШИПА
+    // =========================================
+
+    private void CreateEarthSpike(Vector2 position)
+    {
         GameObject spike = Instantiate(
             earthSpikePrefab,
-            target,
+            position,
             Quaternion.identity
         );
 
+        EarthSpike spikeScript =
+            spike.GetComponent<EarthSpike>();
 
-        Debug.Log(
-            "🌍 Босс создал шип земли!"
-        );
+        if (spikeScript != null)
+        {
+            spikeScript.damage = earthDamage;
+        }
+        else
+        {
+            Debug.LogError(
+                "🌍 На EarthSpike Prefab нет EarthSpike.cs!"
+            );
+        }
     }
 
 
@@ -282,55 +364,120 @@ public class BossMageAI : MonoBehaviour
         if (lightningPrefab == null)
         {
             Debug.LogWarning(
-                "Не назначен Lightning Prefab!"
+                "⚡ Lightning Prefab не назначен!"
             );
 
             return;
         }
 
-        Vector2 target = GetAttackPoint();
+        if (player == null)
+        {
+            Debug.LogWarning(
+                "⚡ Player не назначен!"
+            );
+
+            return;
+        }
+
+
+        float lightningY;
+
+        if (lightningPoint != null)
+        {
+            lightningY =
+                lightningPoint.position.y;
+        }
+        else
+        {
+            lightningY =
+                player.position.y + 5f;
+        }
+
+
+        Vector2 spawnPosition = new Vector2(
+            player.position.x,
+            lightningY
+        );
 
 
         GameObject lightning = Instantiate(
             lightningPrefab,
-            target,
+            spawnPosition,
             Quaternion.identity
         );
 
 
-        Debug.Log(
-            "⚡ Босс вызвал молнию!"
-        );
+        Lightning2D lightningScript =
+            lightning.GetComponent<Lightning2D>();
+
+
+        if (lightningScript != null)
+        {
+            lightningScript.damage =
+                lightningDamage;
+
+            lightningScript.SetTarget(player);
+
+            Debug.Log(
+                "⚡ Молния создана над игроком!"
+            );
+        }
+        else
+        {
+            Debug.LogError(
+                "⚡ Lightning Prefab НЕ содержит Lightning2D!"
+            );
+        }
     }
 
 
     // =========================================
-    // ТОЧКА АТАКИ
+    // 👤 ПРОВЕРКА ЗЕМЛИ
     // =========================================
 
-    private Vector2 GetAttackPoint()
+    private bool IsPlayerGrounded()
     {
         if (player == null)
-        {
-            return transform.position;
-        }
+            return false;
+
+        Collider2D col =
+            player.GetComponent<Collider2D>();
+
+        if (col == null)
+            return false;
+
+        Vector2 origin =
+            col.bounds.center;
+
+        float distance =
+            col.bounds.extents.y +
+            groundCheckDistance;
 
 
-        if (attackPoints == null ||
-            attackPoints.Length == 0)
-        {
-            return player.position;
-        }
-
-
-        int randomPoint =
-            Random.Range(
-                0,
-                attackPoints.Length
+        RaycastHit2D hit =
+            Physics2D.Raycast(
+                origin,
+                Vector2.down,
+                distance,
+                groundLayer
             );
 
 
-        return attackPoints[randomPoint].position;
+        return hit.collider != null;
+    }
+
+
+    // =========================================
+    // 👆 ИГРОК ВЫШЕ БОССА?
+    // =========================================
+
+    private bool IsPlayerAboveBoss()
+    {
+        if (player == null)
+            return false;
+
+        return player.position.y >
+               transform.position.y + 0.5f;
     }
 
 
@@ -349,10 +496,7 @@ public class BossMageAI : MonoBehaviour
         );
 
 
-        // =========================================
-        // FIRE POINT
-        // =========================================
-
+        // 🔥 FirePoint
         if (firePoint != null)
         {
             Gizmos.color = Color.cyan;
@@ -361,32 +505,30 @@ public class BossMageAI : MonoBehaviour
                 firePoint.position,
                 0.2f
             );
+        }
 
-            Gizmos.DrawLine(
-                transform.position,
-                firePoint.position
+
+        // ⚡ LightningPoint
+        if (lightningPoint != null)
+        {
+            Gizmos.color = Color.blue;
+
+            Gizmos.DrawSphere(
+                lightningPoint.position,
+                0.25f
             );
         }
 
 
-        // =========================================
-        // ТОЧКИ АТАК
-        // =========================================
-
-        if (attackPoints != null)
+        // 🌍 EarthSpikePoint
+        if (earthSpikePoint != null)
         {
-            Gizmos.color = Color.yellow;
+            Gizmos.color = Color.green;
 
-            foreach (Transform point in attackPoints)
-            {
-                if (point != null)
-                {
-                    Gizmos.DrawSphere(
-                        point.position,
-                        0.25f
-                    );
-                }
-            }
+            Gizmos.DrawSphere(
+                earthSpikePoint.position,
+                0.25f
+            );
         }
     }
 }
