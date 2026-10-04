@@ -5,192 +5,102 @@ public class Player2D : MonoBehaviour
 {
     [Header("MOVEMENT")]
     public float moveSpeed = 5f;
-    public float jumpForce = 10f;
+    public float jumpForce = 12f;
+
+    [Header("GROUND CHECK")]
+    public Transform groundCheck;
+    public float groundCheckRadius = 0.25f;
+    public LayerMask groundLayer;
 
     [Header("PLAYER HP")]
     public int maxHealth = 200;
     private int currentHealth;
 
-    [Header("GROUND CHECK")]
-    public Transform groundCheck;
-    public float groundCheckRadius = 0.2f;
-    public LayerMask groundLayer;
-
-    [Header("DEBUG")]
-    public bool showGroundDebug = true;
-
     private Rigidbody2D rb;
     private bool isGrounded;
-    private bool dead;
 
-
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        if (rb == null)
-        {
-            Debug.LogError("❌ На Player нет Rigidbody2D!");
-            return;
-        }
-
         currentHealth = maxHealth;
     }
 
-
     private void Update()
     {
-        if (dead)
-            return;
-
-        Move();
-
-        // Проверяем землю
         CheckGround();
-
-        // Прыжок
-        if (Keyboard.current != null &&
-            Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            Debug.Log("SPACE нажат. Grounded = " + isGrounded);
-
-            if (isGrounded)
-            {
-                Jump();
-            }
-            else
-            {
-                Debug.Log("❌ Прыжок невозможен: игрок не на земле!");
-            }
-        }
+        Jump();
     }
 
-
-    // =========================================
-    // ДВИЖЕНИЕ
-    // =========================================
+    private void FixedUpdate()
+    {
+        Move();
+    }
 
     private void Move()
     {
-        if (rb == null)
-            return;
-
-        float move = 0f;
+        float horizontal = 0f;
 
         if (Keyboard.current != null)
         {
-            // A
-            if (Keyboard.current.aKey.isPressed)
+            if (Keyboard.current.aKey.isPressed ||
+                Keyboard.current.leftArrowKey.isPressed)
             {
-                move = -1f;
+                horizontal = -1f;
             }
 
-            // D
-            if (Keyboard.current.dKey.isPressed)
+            if (Keyboard.current.dKey.isPressed ||
+                Keyboard.current.rightArrowKey.isPressed)
             {
-                move = 1f;
-            }
-
-            // Стрелка влево
-            if (Keyboard.current.leftArrowKey.isPressed)
-            {
-                move = -1f;
-            }
-
-            // Стрелка вправо
-            if (Keyboard.current.rightArrowKey.isPressed)
-            {
-                move = 1f;
+                horizontal = 1f;
             }
         }
 
         rb.linearVelocity = new Vector2(
-            move * moveSpeed,
+            horizontal * moveSpeed,
             rb.linearVelocity.y
         );
-
-
-        // Разворот игрока
-        if (move > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (move < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
     }
 
+    private void Jump()
+    {
+        if (Keyboard.current == null)
+            return;
 
-    // =========================================
-    // ПРОВЕРКА ЗЕМЛИ
-    // =========================================
+        if (Keyboard.current.spaceKey.wasPressedThisFrame &&
+            isGrounded)
+        {
+            rb.linearVelocity = new Vector2(
+                rb.linearVelocity.x,
+                jumpForce
+            );
+
+            Debug.Log(" ПРЫЖОК!");
+        }
+    }
 
     private void CheckGround()
     {
         if (groundCheck == null)
         {
             isGrounded = false;
-
-            if (showGroundDebug)
-            {
-                Debug.LogWarning(
-                    "⚠️ GroundCheck не назначен в Inspector!"
-                );
-            }
-
             return;
         }
 
-        isGrounded = Physics2D.OverlapCircle(
+        Collider2D hit = Physics2D.OverlapCircle(
             groundCheck.position,
             groundCheckRadius,
             groundLayer
         );
 
-
-        // Отладка
-        if (showGroundDebug)
-        {
-            // Можно включить/выключить через Inspector
-        }
+        isGrounded = hit != null;
     }
-
-
-    // =========================================
-    // ПРЫЖОК
-    // =========================================
-
-    private void Jump()
-    {
-        if (rb == null)
-            return;
-
-        rb.linearVelocity = new Vector2(
-            rb.linearVelocity.x,
-            jumpForce
-        );
-
-        Debug.Log("🦘 ИГРОК ПРЫГНУЛ!");
-    }
-
-
-    // =========================================
-    // ПОЛУЧЕНИЕ УРОНА
-    // =========================================
 
     public void TakeDamage(int damage)
     {
-        if (dead)
-            return;
-
         currentHealth -= damage;
 
         Debug.Log(
-            "Игрок получил " + damage +
-            " урона. HP: " +
-            currentHealth + "/" +
-            maxHealth
+            "Игрок получил " + damage + " урона"
         );
 
         if (currentHealth <= 0)
@@ -199,37 +109,16 @@ public class Player2D : MonoBehaviour
         }
     }
 
-
-    // =========================================
-    // СМЕРТЬ
-    // =========================================
-
     private void Die()
     {
-        dead = true;
-
-        Debug.Log("💀 ИГРОК УМЕР!");
-
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
-
-        Destroy(gameObject);
+        Debug.Log(" Игрок умер");
     }
-
-
-    // =========================================
-    // GIZMOS
-    // =========================================
 
     private void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
         {
-            Gizmos.color = isGrounded
-                ? Color.green
-                : Color.red;
+            Gizmos.color = Color.green;
 
             Gizmos.DrawWireSphere(
                 groundCheck.position,

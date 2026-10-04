@@ -1,30 +1,86 @@
+
 using UnityEngine;
 
 public class EarthSpike : MonoBehaviour
 {
+    [Header("DAMAGE")]
     public int damage = 40;
-    public float lifeTime = 2f;
 
-    private bool hasHit = false;
+    [Header("LIFETIME")]
+    public float lifetime = 2f;
+
+    private bool canDamage = true;
+
 
     private void Start()
     {
-        Destroy(gameObject, lifeTime);
+        // Шип исчезает через указанное время
+        Destroy(gameObject, lifetime);
     }
+
+
+    // =========================================
+    // TRIGGER
+    // =========================================
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (hasHit)
+        if (!canDamage)
             return;
 
         Player2D player = other.GetComponent<Player2D>();
 
+        // Если Player2D находится на родителе
+        if (player == null)
+        {
+            player = other.GetComponentInParent<Player2D>();
+        }
+
         if (player != null)
         {
             player.TakeDamage(damage);
-            hasHit = true;
 
-            Debug.Log("🌍 Шип попал! Урон: " + damage);
+            canDamage = false;
+
+            Debug.Log(
+                " ШИП ПОПАЛ В ИГРОКА! Урон: " +
+                damage
+            );
+        }
+    }
+
+
+    // =========================================
+    // COLLISION
+    // =========================================
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!canDamage)
+            return;
+
+        Player2D player =
+            collision.gameObject.GetComponent<Player2D>();
+
+        // Если Player2D находится на родителе
+        if (player == null)
+        {
+            player =
+                collision.gameObject
+                .GetComponentInParent<Player2D>();
+        }
+
+        if (player != null)
+        {
+            player.TakeDamage(damage);
+
+            canDamage = false;
+
+            Debug.Log(
+                " ШИП ПОПАЛ В ИГРОКА! Урон: " +
+                damage
+            );
         }
     }
 }
+
