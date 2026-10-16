@@ -2,75 +2,84 @@ using UnityEngine;
 
 public class Fireball2D : MonoBehaviour
 {
-    [Header("FIREBALL")]
-    public float speed = 8f;
-    public int damage = 30;
-    public float lifeTime = 5f;
+    [Header("STATS")]
+    public int damage = 20;
+    public float speed = 10f;
+    public float lifetime = 5f;
 
-    // Направление полёта
-    private Vector2 direction;
+    [Header("COLLISION")]
+    [Tooltip("Слои, о которые шар разбивается (земля, стены). Игрок определяется по компоненту Player2D.")]
+    public LayerMask obstacleLayers;
 
-    // =========================================
-    // УСТАНОВИТЬ НАПРАВЛЕНИЕ
-    // =========================================
+    [Header("HIT EFFECT")]
+    public GameObject hitEffect;
+    public float hitEffectLifetime = 1.5f;
 
-    public void SetDirection(Vector2 newDirection)
-    {
-        direction = newDirection.normalized;
-
-        // Поворачиваем огненный шар
-        float angle = Mathf.Atan2(
-            direction.y,
-            direction.x
-        ) * Mathf.Rad2Deg;
-
-        transform.rotation = Quaternion.Euler(
-            0,
-            0,
-            angle
-        );
-    }
-
-    // =========================================
-    // СОЗДАНИЕ
-    // =========================================
+    private Vector2 direction = Vector2.right;
+    private bool hasHit;
 
     private void Start()
     {
-        Destroy(gameObject, lifeTime);
+        Destroy(gameObject, lifetime);
     }
 
-    // =========================================
-    // ПОЛЁТ ПО ПРЯМОЙ
-    // =========================================
+    // Вызывается боссом сразу после создания шара.
+    public void SetDirection(Vector2 newDirection)
+    {
+        if (newDirection.sqrMagnitude < 0.0001f)
+            return;
+
+        direction = newDirection.normalized;
+    }
 
     private void Update()
     {
-        transform.position +=
-            (Vector3)direction *
-            speed *
-            Time.deltaTime;
+        // Space.World: шар повёрнут носом по полёту, но летит строго по направлению.
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
-    // =========================================
-    // ПОПАДАНИЕ В ИГРОКА
-    // =========================================
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Player2D player =
-            collision.GetComponent<Player2D>();
+        if (hasHit)
+            return;
 
-        if (player != null)
+        // Не бьём самого босса.
+        if (other.GetComponentInParent<BossMageAI>() != null)
+            return;
+
+        Player2D playerScript = other.GetComponentInParent<Player2D>();
+
+        if (playerScript != null)
         {
-            player.TakeDamage(damage);
-
-            Debug.Log(
-                "🔥 Огненный шар попал в игрока! Урон: "
-                + damage
+            // Вызывает TakeDamage(int) на игроке, если такой метод есть.
+            playerScript.gameObject.SendMessage(
+                "TakeDamage",
+                damage,
+                SendMessageOptions.DontRequireReceiver
             );
 
-            Destroy(gameObject);
+            Hit();
+            return;
         }
+
+        // Земля и стены.
+        if (obstacleLayers.value != 0 &&
+            (obstacleLayers.value & (1 << other.gameObject.layer)) != 0)
+        {
+            Hit();
+        }
+    }
+
+    private void Hit()
+    {
+        hasHit = true;
+
+        if (hitEffect != null)
+        {
+            GameObject fx = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(fx, hitEffectLifetime);
+        }
+
+        Destroy(gameObject);
     }
 }

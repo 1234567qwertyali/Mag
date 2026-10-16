@@ -12,7 +12,16 @@ public enum BossSkill
     EarthSpikes,
     SpikeCombo,
     BigSpikeTrap,
-    Lightning
+    Lightning,
+
+    // Новые навыки
+    FireballFan,     // веер огненных шаров
+    MeteorRain,      // шары падают сверху
+    FireCircleTrio,  // три огненных круга рядом
+    LightningStorm,  // серия молний подряд
+    DragonHeadPair,  // две головы дракона
+    SpikeWaveBoth,   // шипы в обе стороны от босса
+    SpikeChase       // шипы под игроком, один за другим
 }
 
 [System.Serializable]
@@ -40,11 +49,12 @@ public class BossMageAI : MonoBehaviour
     public float attackRange = 15f;
     public float farDistance = 12f;
 
-    [Header("TELEPORT")]
+    [Header("TELEPORT (по урону)")]
     public Transform[] teleportPoints;
-    public bool teleportBeforeAttack = true;
     public GameObject teleportEffect;
     public float teleportEffectLifetime = 2f;
+    [Tooltip("Каждые N полученного урона босс телепортируется и сразу атакует. 0 = выключено.")]
+    [Min(0)] public int damageToTeleport = 200;
 
     [Header("FIREBALL MACHINE GUN")]
     public GameObject fireballPrefab;
@@ -52,6 +62,21 @@ public class BossMageAI : MonoBehaviour
     public int fireballDamage = 20;
     public int burstFireballCount = 7;
     public float burstFireballDelay = 0.2f;
+    [Tooltip("Включи, если нос спрайта шара смотрит ВПРАВО (хвост слева). Выключи, если нос смотрит ВЛЕВО (хвост справа).")]
+    public bool fireballSpriteFacesRight = false;
+
+    [Header("FIREBALL FAN (веер)")]
+    [Min(2)] public int fanFireballCount = 7;
+    [Tooltip("Общий угол веера в градусах")]
+    public float fanAngle = 80f;
+
+    [Header("METEOR RAIN (шары сверху)")]
+    [Min(1)] public int meteorCount = 8;
+    public float meteorDelay = 0.2f;
+    [Tooltip("Разброс по X вокруг игрока")]
+    public float meteorSpreadX = 5f;
+    [Tooltip("Высота над игроком, откуда падают шары")]
+    public float meteorHeight = 8f;
 
     [Header("FIRE DRAGON HEAD")]
     public GameObject dragonHeadPrefab;
@@ -59,6 +84,8 @@ public class BossMageAI : MonoBehaviour
     public int dragonHeadDamage = 60;
     public float dragonHeadSpeed = 5f;
     public float dragonHeadLifetime = 6f;
+    [Tooltip("Пауза между двумя головами в навыке DragonHeadPair")]
+    public float dragonPairDelay = 0.8f;
 
     [Header("FIRE WALL")]
     public GameObject fireWallPrefab;
@@ -73,6 +100,10 @@ public class BossMageAI : MonoBehaviour
     public float lightningWarningTime = 0.8f;
     public float lightningHeight = 5f;
 
+    [Header("LIGHTNING STORM (серия молний)")]
+    [Min(1)] public int stormStrikes = 4;
+    public float stormStrikeDelay = 0.4f;
+
     [Header("EARTH SPIKES")]
     public GameObject earthSpikePrefab;
     public int earthSpikeDamage = 40;
@@ -82,34 +113,64 @@ public class BossMageAI : MonoBehaviour
     public float spikeLifetime = 2f;
     public float spikeHeight = 0f;
 
-    [Header("TWO SPIKE TRAP")]
-    public Transform bigSpikePoint1;
-    public Transform bigSpikePoint2;
+    [Header("SPIKE CHASE (шипы под игроком)")]
+    [Min(1)] public int chaseSpikeCount = 5;
+    [Tooltip("Сколько секунд игрок может убежать, прежде чем шип появится в запомненной точке")]
+    public float chaseSpikeTelegraph = 0.5f;
+    public float chaseSpikeGap = 0.15f;
+
+    [Header("BIG SPIKE TRAP (до 10 шипов и больше)")]
+    [Tooltip("Точки, где появятся шипы. Создай пустые объекты на арене и перетащи сюда (например, 10 штук).")]
+    public Transform[] bigSpikePoints;
     public float bigSpikeLifetime = 4f;
+    [Tooltip("0 = все шипы сразу. Больше 0 = шипы появляются по очереди с этой паузой.")]
+    [Min(0f)] public float bigSpikeDelay = 0f;
 
     [Header("FIRE CIRCLE")]
     public GameObject fireCirclePrefab;
     public int fireCircleDamage = 40;
     public float fireCircleWarningTime = 1f;
+    [Tooltip("Сколько кругов в навыке FireCircleTrio")]
+    [Min(2)] public int fireCircleTrioCount = 3;
+    [Tooltip("Расстояние между кругами")]
+    public float fireCircleSpacing = 3f;
 
     [Header("ATTACK SETTINGS")]
-    public float attackCooldown = 2f;
+    [Tooltip("Сколько навыков подряд (минимум)")]
+    [Min(1)] public int minSkillsInCombo = 3;
+    [Tooltip("Сколько навыков подряд (максимум)")]
+    [Min(1)] public int maxSkillsInCombo = 4;
+    [Tooltip("Сколько секунд босс ничего не делает после серии навыков")]
+    [Min(0f)] public float restTime = 7f;
     public float warningTime = 0.5f;
-    public float comboDelay = 0.2f;
+    [Tooltip("Пауза между навыками в серии")]
+    public float comboDelay = 0.5f;
 
-    [Header("ATTACK WEIGHTS (вес = относительный шанс)")]
-    [Tooltip("Вблизи, игрок на земле")]
+    [Header("ATTACK WEIGHTS: ВБЛИЗИ (вес = относительный шанс)")]
+    [Tooltip("Игрок на земле")]
     [Min(0f)] public float bigSpikeTrapChance = 0.2f;
-    [Tooltip("Вблизи, игрок на земле")]
-    [Min(0f)] public float spikeChance = 0.4f;
-    [Tooltip("Вблизи")]
+    [Tooltip("Игрок на земле (комбо шипы + шары + молния)")]
+    [Min(0f)] public float spikeChance = 0.3f;
+    [Tooltip("Игрок на земле")]
+    [Min(0f)] public float spikeWaveBothChance = 0.3f;
+    [Tooltip("Игрок на земле")]
+    [Min(0f)] public float spikeChaseChance = 0.3f;
     [Min(0f)] public float fireCircleChance = 0.2f;
-    [Tooltip("Вблизи, игрок выше босса")]
-    [Min(0f)] public float lightningChance = 0.5f;
-    [Tooltip("Вблизи, всегда доступен")]
+    [Min(0f)] public float fireCircleTrioChance = 0.2f;
+    [Tooltip("Игрок выше босса")]
+    [Min(0f)] public float lightningChance = 0.4f;
+    [Min(0f)] public float lightningStormChance = 0.3f;
     [Min(0f)] public float fireballChance = 0.3f;
-    [Tooltip("Издалека: шанс стены огня, иначе голова дракона")]
-    [Range(0f, 1f)] public float fireWallChance = 0.35f;
+    [Min(0f)] public float fireballFanChance = 0.3f;
+    [Min(0f)] public float meteorRainChance = 0.3f;
+
+    [Header("ATTACK WEIGHTS: ИЗДАЛЕКА")]
+    [Min(0f)] public float farFireWallChance = 0.35f;
+    [Min(0f)] public float farDragonHeadChance = 0.3f;
+    [Min(0f)] public float farDragonPairChance = 0.2f;
+    [Min(0f)] public float farMeteorRainChance = 0.3f;
+    [Min(0f)] public float farFireballFanChance = 0.25f;
+    [Min(0f)] public float farLightningStormChance = 0.2f;
 
     [Header("WARNING VISUAL")]
     public SpriteRenderer warningGlow;
@@ -132,10 +193,14 @@ public class BossMageAI : MonoBehaviour
 
     // ---------- Внутреннее состояние ----------
 
-    private bool isAttacking;   // идёт вся атака, включая кулдаун
-    private bool isCasting;     // идёт сам скил, без кулдауна
+    private bool isAttacking;   // идёт вся серия атак, включая отдых
+    private bool isCasting;     // идёт сам скил, без отдыха
     private bool isDead;
     private int lastTeleportIndex = -1;
+    private int damageAccumulated; // накопленный урон для телепорта
+
+    private BossSkill lastSkill;
+    private bool hasLastSkill;
 
     private Player2D playerController;
     private Coroutine indicatorRoutine;
@@ -160,6 +225,9 @@ public class BossMageAI : MonoBehaviour
         totalSpikes = Mathf.Max(1, totalSpikes);
         burstFireballCount = Mathf.Max(1, burstFireballCount);
         indicatorSize = Mathf.Max(0.05f, indicatorSize);
+        damageToTeleport = Mathf.Max(0, damageToTeleport);
+        minSkillsInCombo = Mathf.Max(1, minSkillsInCombo);
+        maxSkillsInCombo = Mathf.Max(minSkillsInCombo, maxSkillsInCombo);
     }
 
     private void Awake()
@@ -170,6 +238,7 @@ public class BossMageAI : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        damageAccumulated = 0;
         CachePlayer();
         SetWarning(false);
         SetupIndicator();
@@ -228,7 +297,6 @@ public class BossMageAI : MonoBehaviour
         if (skillIndicator == null)
             return;
 
-        // Если квадрат создан кодом или стоит отдельно от точки, переносим его в точку.
         // Позиция берётся каждый кадр, поэтому поворот босса квадрат не ломает.
         if (indicatorPoint != null)
         {
@@ -278,14 +346,22 @@ public class BossMageAI : MonoBehaviour
     {
         return new List<BossSkillColor>
         {
-            new BossSkillColor(BossSkill.FireballBurst, new Color(1f, 0.5f, 0f)),     // оранжевый
-            new BossSkillColor(BossSkill.DragonHead,    new Color(0.8f, 0f, 0f)),     // тёмно-красный
-            new BossSkillColor(BossSkill.FireWall,      new Color(1f, 0.9f, 0f)),     // жёлтый
-            new BossSkillColor(BossSkill.FireCircle,    new Color(1f, 0f, 0.5f)),     // розовый
-            new BossSkillColor(BossSkill.EarthSpikes,   new Color(0.55f, 0.3f, 0.1f)),// коричневый
-            new BossSkillColor(BossSkill.SpikeCombo,    new Color(0.55f, 0.3f, 0.1f)),
-            new BossSkillColor(BossSkill.BigSpikeTrap,  new Color(0.6f, 0f, 1f)),     // фиолетовый
-            new BossSkillColor(BossSkill.Lightning,     new Color(0.3f, 0.8f, 1f))    // голубой
+            new BossSkillColor(BossSkill.FireballBurst,   new Color(1f, 0.5f, 0f)),       // оранжевый
+            new BossSkillColor(BossSkill.DragonHead,      new Color(0.8f, 0f, 0f)),       // тёмно-красный
+            new BossSkillColor(BossSkill.FireWall,        new Color(1f, 0.9f, 0f)),       // жёлтый
+            new BossSkillColor(BossSkill.FireCircle,      new Color(1f, 0f, 0.5f)),       // розовый
+            new BossSkillColor(BossSkill.EarthSpikes,     new Color(0.55f, 0.3f, 0.1f)),  // коричневый
+            new BossSkillColor(BossSkill.SpikeCombo,      new Color(0.55f, 0.3f, 0.1f)),
+            new BossSkillColor(BossSkill.BigSpikeTrap,    new Color(0.6f, 0f, 1f)),       // фиолетовый
+            new BossSkillColor(BossSkill.Lightning,       new Color(0.3f, 0.8f, 1f)),     // голубой
+
+            new BossSkillColor(BossSkill.FireballFan,     new Color(1f, 0.7f, 0.3f)),     // светло-оранжевый
+            new BossSkillColor(BossSkill.MeteorRain,      new Color(0.6f, 0.1f, 0.1f)),   // бордовый
+            new BossSkillColor(BossSkill.FireCircleTrio,  new Color(1f, 0.4f, 0.7f)),     // светло-розовый
+            new BossSkillColor(BossSkill.LightningStorm,  new Color(0.1f, 0.3f, 1f)),     // синий
+            new BossSkillColor(BossSkill.DragonHeadPair,  new Color(0.5f, 0f, 0f)),       // очень тёмно-красный
+            new BossSkillColor(BossSkill.SpikeWaveBoth,   new Color(0.35f, 0.2f, 0.05f)), // тёмно-коричневый
+            new BossSkillColor(BossSkill.SpikeChase,      new Color(0.4f, 1f, 0.3f))      // зелёный
         };
     }
 
@@ -324,7 +400,7 @@ public class BossMageAI : MonoBehaviour
             : null;
     }
 
-    // ---------- Выбор и запуск атаки ----------
+    // ---------- Серия атак ----------
 
     private bool CanStartAttack()
     {
@@ -335,39 +411,49 @@ public class BossMageAI : MonoBehaviour
                <= attackRange * attackRange;
     }
 
+    // Серия из нескольких навыков, потом отдых.
     private IEnumerator StartAttack()
     {
         isAttacking = true;
 
-        // Дальность определяем ДО телепортации.
-        bool playerWasFar = (transform.position - player.position).sqrMagnitude
-                            >= farDistance * farDistance;
+        int skillsInCombo = Random.Range(
+            minSkillsInCombo,
+            Mathf.Max(minSkillsInCombo, maxSkillsInCombo) + 1
+        );
 
-        if (teleportBeforeAttack)
-            TeleportToPoint();
-
-        if (isDead || player == null)
+        for (int i = 0; i < skillsInCombo; i++)
         {
-            isAttacking = false;
-            yield break;
-        }
+            if (isDead || player == null)
+                break;
 
-        BossSkill chosen;
-        bool hasSkill = playerWasFar
-            ? TryChooseFarSkill(out chosen)
-            : TryChooseNearSkill(out chosen);
+            // Дальность определяем заново перед каждым навыком.
+            bool playerIsFar = (transform.position - player.position).sqrMagnitude
+                               >= farDistance * farDistance;
 
-        if (hasSkill)
-        {
+            BossSkill chosen;
+            if (!TryChooseSkill(playerIsFar, out chosen))
+                break;
+
+            lastSkill = chosen;
+            hasLastSkill = true;
+
             isCasting = true;
             yield return StartCoroutine(RunSkill(chosen));
             isCasting = false;
+
+            if (isDead)
+                break;
+
+            if (i < skillsInCombo - 1)
+                yield return new WaitForSeconds(comboDelay);
         }
 
+        isCasting = false;
         SetWarning(false);
 
+        // После серии босс ничего не делает.
         if (!isDead)
-            yield return new WaitForSeconds(attackCooldown);
+            yield return new WaitForSeconds(restTime);
 
         isAttacking = false;
     }
@@ -384,6 +470,13 @@ public class BossMageAI : MonoBehaviour
             case BossSkill.SpikeCombo: return SpikeCombo();
             case BossSkill.BigSpikeTrap: return BigSpikeTrapAttack();
             case BossSkill.Lightning: return LightningAttack();
+            case BossSkill.FireballFan: return FireballFanAttack();
+            case BossSkill.MeteorRain: return MeteorRainAttack();
+            case BossSkill.FireCircleTrio: return FireCircleTrioAttack();
+            case BossSkill.LightningStorm: return LightningStormAttack();
+            case BossSkill.DragonHeadPair: return DragonHeadPairAttack();
+            case BossSkill.SpikeWaveBoth: return SpikeWaveBothAttack();
+            case BossSkill.SpikeChase: return SpikeChaseAttack();
             default: return EmptyRoutine();
         }
     }
@@ -393,37 +486,21 @@ public class BossMageAI : MonoBehaviour
         yield break;
     }
 
-    // Издалека: стена огня или голова дракона.
-    private bool TryChooseFarSkill(out BossSkill skill)
-    {
-        bool wantWall = Random.value < fireWallChance;
-        BossSkill first = wantWall ? BossSkill.FireWall : BossSkill.DragonHead;
-        BossSkill second = wantWall ? BossSkill.DragonHead : BossSkill.FireWall;
+    // ---------- Выбор навыка ----------
 
-        if (HasAssets(first)) { skill = first; return true; }
-        if (HasAssets(second)) { skill = second; return true; }
-
-        skill = BossSkill.FireballBurst;
-        return false;
-    }
-
-    // Вблизи: взвешенный выбор среди доступных скилов.
-    private bool TryChooseNearSkill(out BossSkill skill)
+    // Взвешенный выбор среди доступных навыков. Прошлый навык не повторяется,
+    // если есть из чего выбирать.
+    private bool TryChooseSkill(bool far, out BossSkill skill)
     {
         candidates.Clear();
 
-        if (IsPlayerGrounded())
-        {
-            AddCandidate(BossSkill.BigSpikeTrap, bigSpikeTrapChance);
-            AddCandidate(BossSkill.SpikeCombo, spikeChance);
-        }
+        if (far)
+            BuildFarCandidates();
+        else
+            BuildNearCandidates();
 
-        AddCandidate(BossSkill.FireCircle, fireCircleChance);
-
-        if (IsPlayerAboveBoss())
-            AddCandidate(BossSkill.Lightning, lightningChance);
-
-        AddCandidate(BossSkill.FireballBurst, fireballChance);
+        if (candidates.Count > 1 && hasLastSkill)
+            candidates.RemoveAll(c => c.Key == lastSkill);
 
         float total = 0f;
         foreach (var c in candidates)
@@ -451,6 +528,38 @@ public class BossMageAI : MonoBehaviour
         return true;
     }
 
+    private void BuildNearCandidates()
+    {
+        if (IsPlayerGrounded())
+        {
+            AddCandidate(BossSkill.BigSpikeTrap, bigSpikeTrapChance);
+            AddCandidate(BossSkill.SpikeCombo, spikeChance);
+            AddCandidate(BossSkill.SpikeWaveBoth, spikeWaveBothChance);
+            AddCandidate(BossSkill.SpikeChase, spikeChaseChance);
+        }
+
+        AddCandidate(BossSkill.FireCircle, fireCircleChance);
+        AddCandidate(BossSkill.FireCircleTrio, fireCircleTrioChance);
+
+        if (IsPlayerAboveBoss())
+            AddCandidate(BossSkill.Lightning, lightningChance);
+
+        AddCandidate(BossSkill.LightningStorm, lightningStormChance);
+        AddCandidate(BossSkill.FireballBurst, fireballChance);
+        AddCandidate(BossSkill.FireballFan, fireballFanChance);
+        AddCandidate(BossSkill.MeteorRain, meteorRainChance);
+    }
+
+    private void BuildFarCandidates()
+    {
+        AddCandidate(BossSkill.FireWall, farFireWallChance);
+        AddCandidate(BossSkill.DragonHead, farDragonHeadChance);
+        AddCandidate(BossSkill.DragonHeadPair, farDragonPairChance);
+        AddCandidate(BossSkill.MeteorRain, farMeteorRainChance);
+        AddCandidate(BossSkill.FireballFan, farFireballFanChance);
+        AddCandidate(BossSkill.LightningStorm, farLightningStormChance);
+    }
+
     private void AddCandidate(BossSkill skill, float weight)
     {
         if (weight > 0f && HasAssets(skill))
@@ -463,25 +572,45 @@ public class BossMageAI : MonoBehaviour
         switch (skill)
         {
             case BossSkill.FireballBurst:
+            case BossSkill.FireballFan:
                 return fireballPrefab != null && firePoint != null;
+            case BossSkill.MeteorRain:
+                return fireballPrefab != null;
             case BossSkill.DragonHead:
+            case BossSkill.DragonHeadPair:
                 return dragonHeadPrefab != null;
             case BossSkill.FireWall:
                 return fireWallPrefab != null;
             case BossSkill.FireCircle:
+            case BossSkill.FireCircleTrio:
                 return fireCirclePrefab != null;
             case BossSkill.EarthSpikes:
             case BossSkill.SpikeCombo:
+            case BossSkill.SpikeWaveBoth:
+            case BossSkill.SpikeChase:
                 return earthSpikePrefab != null;
             case BossSkill.BigSpikeTrap:
-                return earthSpikePrefab != null &&
-                       bigSpikePoint1 != null &&
-                       bigSpikePoint2 != null;
+                return earthSpikePrefab != null && HasBigSpikePoints();
             case BossSkill.Lightning:
+            case BossSkill.LightningStorm:
                 return lightningPrefab != null;
             default:
                 return true;
         }
+    }
+
+    private bool HasBigSpikePoints()
+    {
+        if (bigSpikePoints == null)
+            return false;
+
+        for (int i = 0; i < bigSpikePoints.Length; i++)
+        {
+            if (bigSpikePoints[i] != null)
+                return true;
+        }
+
+        return false;
     }
 
     // ---------- Телепорт ----------
@@ -531,58 +660,96 @@ public class BossMageAI : MonoBehaviour
         Destroy(fx, teleportEffectLifetime);
     }
 
-    // ---------- Скилы ----------
-
-    // Серия огненных шаров.
-    private IEnumerator FireballBurstAttack()
+    // Копим урон. Набралось damageToTeleport: телепорт и сразу новая серия атак.
+    private void CheckDamageTeleport(int damage)
     {
-        if (!HasAssets(BossSkill.FireballBurst))
-            yield break;
+        if (damageToTeleport <= 0)
+            return;
 
-        ShowSkillColor(BossSkill.FireballBurst);
-        yield return WarnRoutine(warningTime);
+        damageAccumulated += damage;
 
-        for (int i = 0; i < burstFireballCount; i++)
+        if (damageAccumulated < damageToTeleport)
+            return;
+
+        // Остаток переносим дальше, чтобы лишний урон не терялся.
+        damageAccumulated %= damageToTeleport;
+        TeleportAndAttack();
+    }
+
+    // Прерывает всё текущее (скил или отдых), телепортируется и сразу атакует.
+    private void TeleportAndAttack()
+    {
+        StopAllCoroutines();
+
+        indicatorRoutine = null;
+        isCasting = false;
+        isAttacking = false;
+
+        SetWarning(false);
+
+        if (skillIndicator != null)
+            skillIndicator.color = idleColor;
+
+        TeleportToPoint();
+
+        if (player != null)
+            StartCoroutine(StartAttack());
+    }
+
+    // ---------- Общие спавнеры ----------
+
+    private void SpawnFireball(Vector3 position, Vector2 direction)
+    {
+        GameObject fb = Instantiate(fireballPrefab, position, Quaternion.identity);
+
+        AimFireball(fb, direction);
+
+        Fireball2D fs = fb.GetComponent<Fireball2D>();
+
+        if (fs != null)
         {
-            if (player == null || isDead)
-                yield break;
-
-            GameObject fb = Instantiate(
-                fireballPrefab,
-                firePoint.position,
-                Quaternion.identity
-            );
-
-            Fireball2D fs = fb.GetComponent<Fireball2D>();
-
-            if (fs != null)
-            {
-                fs.damage = fireballDamage;
-
-                Vector2 direction =
-                    ((Vector2)player.position -
-                     (Vector2)firePoint.position).normalized;
-
-                fs.SetDirection(direction);
-            }
-
-            if (i < burstFireballCount - 1)
-                yield return new WaitForSeconds(burstFireballDelay);
+            fs.damage = fireballDamage;
+            fs.SetDirection(direction);
         }
     }
 
-    // Голова огненного дракона.
-    private IEnumerator DragonHeadAttack()
+    // Поворачивает шар носом по направлению полёта: влево, вправо, вверх, вниз, по диагонали.
+    private void AimFireball(GameObject fb, Vector2 direction)
     {
-        if (player == null || !HasAssets(BossSkill.DragonHead))
-            yield break;
+        if (fb == null || direction.sqrMagnitude < 0.0001f)
+            return;
 
-        ShowSkillColor(BossSkill.DragonHead);
-        yield return WarnRoutine(warningTime);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bool flyingLeft = direction.x < 0f;
 
-        if (player == null || isDead)
-            yield break;
+        float rotation;
+        bool flipY;
 
+        if (fireballSpriteFacesRight)
+        {
+            // Нос спрайта смотрит вправо.
+            rotation = angle;
+            flipY = flyingLeft;     // при полёте влево шар не должен быть "вверх ногами"
+        }
+        else
+        {
+            // Нос спрайта смотрит влево.
+            rotation = angle + 180f;
+            flipY = !flyingLeft;
+        }
+
+        fb.transform.rotation = Quaternion.Euler(0f, 0f, rotation);
+
+        if (flipY)
+        {
+            Vector3 s = fb.transform.localScale;
+            s.y = -s.y;
+            fb.transform.localScale = s;
+        }
+    }
+
+    private void SpawnDragonHead()
+    {
         Vector3 spawnPosition = dragonHeadSpawnPoint != null
             ? dragonHeadSpawnPoint.position
             : transform.position;
@@ -602,6 +769,178 @@ public class BossMageAI : MonoBehaviour
                 dragonHeadLifetime
             );
         }
+    }
+
+    private void SpawnFireCircle(Vector3 position)
+    {
+        GameObject circle = Instantiate(
+            fireCirclePrefab, position, Quaternion.identity
+        );
+
+        FireCircle script = circle.GetComponent<FireCircle>();
+
+        if (script != null)
+        {
+            script.damage = fireCircleDamage;
+            script.warningTime = fireCircleWarningTime;
+        }
+    }
+
+    private void SpawnLightning()
+    {
+        Vector3 position = new Vector3(
+            player.position.x,
+            player.position.y + lightningHeight,
+            player.position.z
+        );
+
+        GameObject lightning = Instantiate(
+            lightningPrefab, position, Quaternion.identity
+        );
+
+        Lightning2D script = lightning.GetComponent<Lightning2D>();
+
+        if (script != null)
+        {
+            script.damage = lightningDamage;
+            script.SetTarget(player);
+        }
+    }
+
+    private void SpawnSpike(Vector3 position, float lifetime)
+    {
+        GameObject spike = Instantiate(
+            earthSpikePrefab, position, Quaternion.identity
+        );
+
+        EarthSpike script = spike.GetComponent<EarthSpike>();
+        if (script != null)
+            script.damage = earthSpikeDamage;
+
+        Destroy(spike, lifetime);
+    }
+
+    // ---------- Скилы ----------
+
+    // Серия огненных шаров. Каждый шар летит носом на игрока.
+    private IEnumerator FireballBurstAttack()
+    {
+        if (!HasAssets(BossSkill.FireballBurst))
+            yield break;
+
+        ShowSkillColor(BossSkill.FireballBurst);
+        yield return WarnRoutine(warningTime);
+
+        for (int i = 0; i < burstFireballCount; i++)
+        {
+            if (player == null || isDead)
+                yield break;
+
+            Vector2 direction =
+                ((Vector2)player.position - (Vector2)firePoint.position).normalized;
+
+            SpawnFireball(firePoint.position, direction);
+
+            if (i < burstFireballCount - 1)
+                yield return new WaitForSeconds(burstFireballDelay);
+        }
+    }
+
+    // Веер шаров: все сразу, в сторону игрока, с разбросом по углу.
+    private IEnumerator FireballFanAttack()
+    {
+        if (player == null || !HasAssets(BossSkill.FireballFan))
+            yield break;
+
+        ShowSkillColor(BossSkill.FireballFan);
+        yield return WarnRoutine(warningTime);
+
+        if (player == null || isDead)
+            yield break;
+
+        Vector2 toPlayer =
+            ((Vector2)player.position - (Vector2)firePoint.position).normalized;
+
+        float baseAngle = Mathf.Atan2(toPlayer.y, toPlayer.x) * Mathf.Rad2Deg;
+        int count = Mathf.Max(2, fanFireballCount);
+        float step = fanAngle / (count - 1);
+        float startAngle = baseAngle - fanAngle * 0.5f;
+
+        for (int i = 0; i < count; i++)
+        {
+            float rad = (startAngle + step * i) * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+
+            SpawnFireball(firePoint.position, direction);
+        }
+    }
+
+    // Шары падают сверху вокруг игрока.
+    private IEnumerator MeteorRainAttack()
+    {
+        if (player == null || !HasAssets(BossSkill.MeteorRain))
+            yield break;
+
+        ShowSkillColor(BossSkill.MeteorRain);
+        yield return WarnRoutine(warningTime);
+
+        for (int i = 0; i < meteorCount; i++)
+        {
+            if (player == null || isDead)
+                yield break;
+
+            Vector3 position = new Vector3(
+                player.position.x + Random.Range(-meteorSpreadX, meteorSpreadX),
+                player.position.y + meteorHeight,
+                player.position.z
+            );
+
+            // Падают вниз с лёгким наклоном.
+            Vector2 direction =
+                new Vector2(Random.Range(-0.15f, 0.15f), -1f).normalized;
+
+            SpawnFireball(position, direction);
+
+            if (i < meteorCount - 1)
+                yield return new WaitForSeconds(meteorDelay);
+        }
+    }
+
+    // Голова огненного дракона.
+    private IEnumerator DragonHeadAttack()
+    {
+        if (player == null || !HasAssets(BossSkill.DragonHead))
+            yield break;
+
+        ShowSkillColor(BossSkill.DragonHead);
+        yield return WarnRoutine(warningTime);
+
+        if (player == null || isDead)
+            yield break;
+
+        SpawnDragonHead();
+    }
+
+    // Две головы дракона с паузой.
+    private IEnumerator DragonHeadPairAttack()
+    {
+        if (player == null || !HasAssets(BossSkill.DragonHeadPair))
+            yield break;
+
+        ShowSkillColor(BossSkill.DragonHeadPair);
+        yield return WarnRoutine(warningTime);
+
+        if (player == null || isDead)
+            yield break;
+
+        SpawnDragonHead();
+
+        yield return new WaitForSeconds(dragonPairDelay);
+
+        if (player == null || isDead)
+            yield break;
+
+        SpawnDragonHead();
     }
 
     // Длинная стена огня.
@@ -649,16 +988,30 @@ public class BossMageAI : MonoBehaviour
         if (player == null || isDead)
             yield break;
 
-        GameObject circle = Instantiate(
-            fireCirclePrefab, player.position, Quaternion.identity
-        );
+        SpawnFireCircle(player.position);
+    }
 
-        FireCircle script = circle.GetComponent<FireCircle>();
+    // Несколько огненных кругов в ряд: один под игроком, остальные по бокам.
+    private IEnumerator FireCircleTrioAttack()
+    {
+        if (player == null || !HasAssets(BossSkill.FireCircleTrio))
+            yield break;
 
-        if (script != null)
+        ShowSkillColor(BossSkill.FireCircleTrio);
+        yield return WarnRoutine(fireCircleWarningTime);
+
+        if (player == null || isDead)
+            yield break;
+
+        int count = Mathf.Max(2, fireCircleTrioCount);
+        float center = (count - 1) * 0.5f;
+
+        for (int i = 0; i < count; i++)
         {
-            script.damage = fireCircleDamage;
-            script.warningTime = fireCircleWarningTime;
+            Vector3 position = player.position +
+                new Vector3((i - center) * fireCircleSpacing, 0f, 0f);
+
+            SpawnFireCircle(position);
         }
     }
 
@@ -717,7 +1070,88 @@ public class BossMageAI : MonoBehaviour
         }
     }
 
-    // Два больших шипа в заданных точках.
+    // Волна шипов сразу в обе стороны от босса.
+    private IEnumerator SpikeWaveBothAttack()
+    {
+        if (!HasAssets(BossSkill.SpikeWaveBoth))
+            yield break;
+
+        if (!IsPlayerGrounded())
+            yield break;
+
+        ShowSkillColor(BossSkill.SpikeWaveBoth);
+        yield return WarnRoutine(warningTime);
+
+        if (isDead)
+            yield break;
+
+        Vector3 origin = transform.position;
+        int perSide = Mathf.Max(1, totalSpikes / 2);
+
+        for (int i = 0; i < perSide; i++)
+        {
+            if (isDead)
+                yield break;
+
+            float offset = i * spikeDistance;
+
+            SpawnSpike(
+                new Vector3(origin.x + offset, origin.y + spikeHeight, origin.z),
+                spikeLifetime
+            );
+
+            // Нулевой шип в центре не дублируем.
+            if (i > 0)
+            {
+                SpawnSpike(
+                    new Vector3(origin.x - offset, origin.y + spikeHeight, origin.z),
+                    spikeLifetime
+                );
+            }
+
+            if (i < perSide - 1)
+                yield return new WaitForSeconds(spikeDelay);
+        }
+    }
+
+    // Шипы под игроком: босс запоминает точку, через chaseSpikeTelegraph там вылезает шип.
+    private IEnumerator SpikeChaseAttack()
+    {
+        if (player == null || !HasAssets(BossSkill.SpikeChase))
+            yield break;
+
+        if (!IsPlayerGrounded())
+            yield break;
+
+        ShowSkillColor(BossSkill.SpikeChase);
+        yield return WarnRoutine(warningTime);
+
+        for (int i = 0; i < chaseSpikeCount; i++)
+        {
+            if (player == null || isDead)
+                yield break;
+
+            Vector3 target = new Vector3(
+                player.position.x,
+                player.position.y + spikeHeight,
+                player.position.z
+            );
+
+            SetWarning(true);
+            yield return new WaitForSeconds(chaseSpikeTelegraph);
+            SetWarning(false);
+
+            if (isDead)
+                yield break;
+
+            SpawnSpike(target, spikeLifetime);
+
+            if (i < chaseSpikeCount - 1)
+                yield return new WaitForSeconds(chaseSpikeGap);
+        }
+    }
+
+    // Шипы во всех заданных точках (можно 10 и больше).
     private IEnumerator BigSpikeTrapAttack()
     {
         if (!HasAssets(BossSkill.BigSpikeTrap))
@@ -729,21 +1163,21 @@ public class BossMageAI : MonoBehaviour
         if (isDead)
             yield break;
 
-        SpawnSpike(bigSpikePoint1.position, bigSpikeLifetime);
-        SpawnSpike(bigSpikePoint2.position, bigSpikeLifetime);
-    }
+        for (int i = 0; i < bigSpikePoints.Length; i++)
+        {
+            if (isDead)
+                yield break;
 
-    private void SpawnSpike(Vector3 position, float lifetime)
-    {
-        GameObject spike = Instantiate(
-            earthSpikePrefab, position, Quaternion.identity
-        );
+            Transform point = bigSpikePoints[i];
 
-        EarthSpike script = spike.GetComponent<EarthSpike>();
-        if (script != null)
-            script.damage = earthSpikeDamage;
+            if (point == null)
+                continue;
 
-        Destroy(spike, lifetime);
+            SpawnSpike(point.position, bigSpikeLifetime);
+
+            if (bigSpikeDelay > 0f && i < bigSpikePoints.Length - 1)
+                yield return new WaitForSeconds(bigSpikeDelay);
+        }
     }
 
     // Молния сверху, если игрок выше босса.
@@ -758,22 +1192,27 @@ public class BossMageAI : MonoBehaviour
         if (player == null || isDead || !IsPlayerAboveBoss())
             yield break;
 
-        Vector3 position = new Vector3(
-            player.position.x,
-            player.position.y + lightningHeight,
-            player.position.z
-        );
+        SpawnLightning();
+    }
 
-        GameObject lightning = Instantiate(
-            lightningPrefab, position, Quaternion.identity
-        );
+    // Серия молний подряд, каждая бьёт туда, где игрок сейчас.
+    private IEnumerator LightningStormAttack()
+    {
+        if (player == null || !HasAssets(BossSkill.LightningStorm))
+            yield break;
 
-        Lightning2D script = lightning.GetComponent<Lightning2D>();
+        ShowSkillColor(BossSkill.LightningStorm);
+        yield return WarnRoutine(lightningWarningTime);
 
-        if (script != null)
+        for (int i = 0; i < stormStrikes; i++)
         {
-            script.damage = lightningDamage;
-            script.SetTarget(player);
+            if (player == null || isDead)
+                yield break;
+
+            SpawnLightning();
+
+            if (i < stormStrikes - 1)
+                yield return new WaitForSeconds(stormStrikeDelay);
         }
     }
 
@@ -828,7 +1267,10 @@ public class BossMageAI : MonoBehaviour
         currentHealth = Mathf.Max(0, currentHealth - damage);
 
         if (currentHealth > 0)
+        {
+            CheckDamageTeleport(damage);
             return;
+        }
 
         isDead = true;
         isAttacking = false;
@@ -865,11 +1307,16 @@ public class BossMageAI : MonoBehaviour
             }
         }
 
-        if (bigSpikePoint1 != null)
-            Gizmos.DrawWireSphere(bigSpikePoint1.position, 0.4f);
+        Gizmos.color = new Color(0.6f, 0f, 1f);
 
-        if (bigSpikePoint2 != null)
-            Gizmos.DrawWireSphere(bigSpikePoint2.position, 0.4f);
+        if (bigSpikePoints != null)
+        {
+            foreach (Transform point in bigSpikePoints)
+            {
+                if (point != null)
+                    Gizmos.DrawWireSphere(point.position, 0.4f);
+            }
+        }
 
         // Точка индикатора скилов.
         Gizmos.color = Color.magenta;

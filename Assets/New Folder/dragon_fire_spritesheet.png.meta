@@ -1,0 +1,1287 @@
+fileFormatVersion: 2
+guid: 7ec17707321134942be0fa85b9f89afe
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6869464172176693162
+    second: dragon_fire_spritesheet_0
+  - first:
+      213: -7704290758972143700
+    second: dragon_fire_spritesheet_1
+  - first:
+      213: 1448388488303274683
+    second: dragon_fire_spritesheet_2
+  - first:
+      213: -4599731756099581919
+    second: dragon_fire_spritesheet_3
+  - first:
+      213: 2231760964658085520
+    second: dragon_fire_spritesheet_4
+  - first:
+      213: -6584304685453161462
+    second: dragon_fire_spritesheet_5
+  - first:
+      213: 8668901960701065088
+    second: dragon_fire_spritesheet_6
+  - first:
+      213: 7781552488393723032
+    second: dragon_fire_spritesheet_7
+  - first:
+      213: 5461186580123381440
+    second: dragon_fire_spritesheet_8
+  - first:
+      213: 4018702994868348758
+    second: dragon_fire_spritesheet_9
+  - first:
+      213: -1272812103294713176
+    second: dragon_fire_spritesheet_10
+  - first:
+      213: -9052039411759883241
+    second: dragon_fire_spritesheet_11
+  - first:
+      213: -3700462131220044197
+    second: dragon_fire_spritesheet_12
+  - first:
+      213: 1497064029194140106
+    second: dragon_fire_spritesheet_13
+  - first:
+      213: 627781395787829654
+    second: dragon_fire_spritesheet_14
+  - first:
+      213: -6712381427682783470
+    second: dragon_fire_spritesheet_15
+  - first:
+      213: 2201751961018291768
+    second: dragon_fire_spritesheet_16
+  - first:
+      213: 2764868161254959335
+    second: dragon_fire_spritesheet_17
+  - first:
+      213: 849774878119924682
+    second: dragon_fire_spritesheet_18
+  - first:
+      213: 4532071822159197674
+    second: dragon_fire_spritesheet_19
+  - first:
+      213: -1544669644293073094
+    second: dragon_fire_spritesheet_20
+  - first:
+      213: 408772723136858807
+    second: dragon_fire_spritesheet_21
+  - first:
+      213: -310379382980712494
+    second: dragon_fire_spritesheet_22
+  - first:
+      213: -7526136455627659628
+    second: dragon_fire_spritesheet_23
+  - first:
+      213: 735300802059172408
+    second: dragon_fire_spritesheet_24
+  - first:
+      213: 1944255436305015629
+    second: dragon_fire_spritesheet_25
+  - first:
+      213: 6960304880162657991
+    second: dragon_fire_spritesheet_26
+  - first:
+      213: 7526225315024278517
+    second: dragon_fire_spritesheet_27
+  - first:
+      213: 7549698815004086746
+    second: dragon_fire_spritesheet_28
+  - first:
+      213: -7499116370977246322
+    second: dragon_fire_spritesheet_29
+  - first:
+      213: -425964143960865028
+    second: dragon_fire_spritesheet_30
+  - first:
+      213: 6537406293536336953
+    second: dragon_fire_spritesheet_31
+  - first:
+      213: 198078629006669275
+    second: dragon_fire_spritesheet_32
+  - first:
+      213: 7815094671146674037
+    second: dragon_fire_spritesheet_33
+  - first:
+      213: 765164748645304927
+    second: dragon_fire_spritesheet_34
+  - first:
+      213: 6020062450946101388
+    second: dragon_fire_spritesheet_35
+  - first:
+      213: 646414955826093838
+    second: dragon_fire_spritesheet_36
+  - first:
+      213: -170771561945777083
+    second: dragon_fire_spritesheet_37
+  - first:
+      213: 4614795304963915207
+    second: dragon_fire_spritesheet_38
+  - first:
+      213: 3171531086969734525
+    second: dragon_fire_spritesheet_39
+  - first:
+      213: 5262814562138829314
+    second: dragon_fire_spritesheet_40
+  - first:
+      213: 3670984496782097037
+    second: dragon_fire_spritesheet_41
+  - first:
+      213: 3773729458531243764
+    second: dragon_fire_spritesheet_42
+  - first:
+      213: -550500553434841425
+    second: dragon_fire_spritesheet_43
+  - first:
+      213: 1853071581959270354
+    second: dragon_fire_spritesheet_44
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 1791
+        width: 96
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa75dd3c44d355f50800000000000000
+      internalID: 6869464172176693162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 1565
+        width: 364
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca70421bf5cd41590800000000000000
+      internalID: -7704290758972143700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 1802
+        width: 69
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbae41ef7a5b91410800000000000000
+      internalID: 1448388488303274683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 1565
+        width: 365
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 128c99796587a20c0800000000000000
+      internalID: -4599731756099581919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 1809
+        width: 66
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09e3702e5cec8fe10800000000000000
+      internalID: 2231760964658085520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 1145
+        y: 1565
+        width: 368
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0ccf9216c9df94a0800000000000000
+      internalID: -6584304685453161462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1608
+        y: 1817
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 087364847602e4870800000000000000
+      internalID: 8668901960701065088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 1565
+        width: 373
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89cc3cf72c0adfb60800000000000000
+      internalID: 7781552488393723032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 1744
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ce626092480acb40800000000000000
+      internalID: 5461186580123381440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 1750
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6572de2f41d45c730800000000000000
+      internalID: 4018702994868348758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 1053
+        width: 377
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a20d4db220165ee0800000000000000
+      internalID: -1272812103294713176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 1307
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71c57316d12b06280800000000000000
+      internalID: -9052039411759883241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 1053
+        width: 380
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5628db2c4155acc0800000000000000
+      internalID: -3700462131220044197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 1307
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac9b1228dc3a6c410800000000000000
+      internalID: 1497064029194140106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1053
+        width: 382
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69158847ad356b800800000000000000
+      internalID: 627781395787829654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1618
+        y: 1308
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21fc90eb7a4d8d2a0800000000000000
+      internalID: -6712381427682783470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 1053
+        width: 386
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836d3004eb13e8e10800000000000000
+      internalID: 2201751961018291768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 1268
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e8a36a91f8ce5620800000000000000
+      internalID: 2764868161254959335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 791
+        width: 37
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac39365dfb10bcb00800000000000000
+      internalID: 849774878119924682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 541
+        width: 385
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae53b507f4725ee30800000000000000
+      internalID: 4532071822159197674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 794
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a37159c742b309ae0800000000000000
+      internalID: -1544669644293073094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 738
+        width: 122
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba017c30a04ca500800000000000000
+      internalID: 408772723136858807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 533
+        width: 376
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d764db789f41bbf0800000000000000
+      internalID: -310379382980712494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 536
+        width: 404
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 496223fc4cacd8790800000000000000
+      internalID: -7526136455627659628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 1644
+        y: 541
+        width: 381
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83afbc50f20543a00800000000000000
+      internalID: 735300802059172408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 762
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d432599a4026bfa10800000000000000
+      internalID: 1944255436305015629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 736
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c653864968f79060800000000000000
+      internalID: 6960304880162657991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 536
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f313916c06827860800000000000000
+      internalID: 7526225315024278517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 322
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad1918d721be5c860800000000000000
+      internalID: 7549698815004086746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 29
+        width: 370
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e83b5928469cde790800000000000000
+      internalID: -7499116370977246322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 28
+        width: 344
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf6c8203edba61af0800000000000000
+      internalID: -425964143960865028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 304
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93ce2a6236889ba50800000000000000
+      internalID: 6537406293536336953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 27
+        width: 356
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd5f98fa677bfb200800000000000000
+      internalID: 198078629006669275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 29
+        width: 362
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 577eebf723bc47c60800000000000000
+      internalID: 7815094671146674037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 287
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5a87ade8496e9a00800000000000000
+      internalID: 765164748645304927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 293
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c805f4a47ee8b8350800000000000000
+      internalID: 6020062450946101388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 295
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0f938b3af688f800800000000000000
+      internalID: 646414955826093838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 266
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54cbb705b2c41adf0800000000000000
+      internalID: -170771561945777083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 282
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cdb38f21eb0b0040800000000000000
+      internalID: 4614795304963915207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 236
+        width: 100
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7580f858ba830c20800000000000000
+      internalID: 3171531086969734525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 262
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 202b90fe5f5490940800000000000000
+      internalID: 5262814562138829314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 223
+        width: 104
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ab9aa33f4f1f230800000000000000
+      internalID: 3670984496782097037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 1118
+        y: 216
+        width: 99
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f69e2ec2fafe5430800000000000000
+      internalID: 3773729458531243764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 222
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fae3cdfc9aa3c58f0800000000000000
+      internalID: -550500553434841425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_fire_spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 1628
+        y: 230
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dfad0a29ce67b910800000000000000
+      internalID: 1853071581959270354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dragon_fire_spritesheet_0: 6869464172176693162
+      dragon_fire_spritesheet_1: -7704290758972143700
+      dragon_fire_spritesheet_10: -1272812103294713176
+      dragon_fire_spritesheet_11: -9052039411759883241
+      dragon_fire_spritesheet_12: -3700462131220044197
+      dragon_fire_spritesheet_13: 1497064029194140106
+      dragon_fire_spritesheet_14: 627781395787829654
+      dragon_fire_spritesheet_15: -6712381427682783470
+      dragon_fire_spritesheet_16: 2201751961018291768
+      dragon_fire_spritesheet_17: 2764868161254959335
+      dragon_fire_spritesheet_18: 849774878119924682
+      dragon_fire_spritesheet_19: 4532071822159197674
+      dragon_fire_spritesheet_2: 1448388488303274683
+      dragon_fire_spritesheet_20: -1544669644293073094
+      dragon_fire_spritesheet_21: 408772723136858807
+      dragon_fire_spritesheet_22: -310379382980712494
+      dragon_fire_spritesheet_23: -7526136455627659628
+      dragon_fire_spritesheet_24: 735300802059172408
+      dragon_fire_spritesheet_25: 1944255436305015629
+      dragon_fire_spritesheet_26: 6960304880162657991
+      dragon_fire_spritesheet_27: 7526225315024278517
+      dragon_fire_spritesheet_28: 7549698815004086746
+      dragon_fire_spritesheet_29: -7499116370977246322
+      dragon_fire_spritesheet_3: -4599731756099581919
+      dragon_fire_spritesheet_30: -425964143960865028
+      dragon_fire_spritesheet_31: 6537406293536336953
+      dragon_fire_spritesheet_32: 198078629006669275
+      dragon_fire_spritesheet_33: 7815094671146674037
+      dragon_fire_spritesheet_34: 765164748645304927
+      dragon_fire_spritesheet_35: 6020062450946101388
+      dragon_fire_spritesheet_36: 646414955826093838
+      dragon_fire_spritesheet_37: -170771561945777083
+      dragon_fire_spritesheet_38: 4614795304963915207
+      dragon_fire_spritesheet_39: 3171531086969734525
+      dragon_fire_spritesheet_4: 2231760964658085520
+      dragon_fire_spritesheet_40: 5262814562138829314
+      dragon_fire_spritesheet_41: 3670984496782097037
+      dragon_fire_spritesheet_42: 3773729458531243764
+      dragon_fire_spritesheet_43: -550500553434841425
+      dragon_fire_spritesheet_44: 1853071581959270354
+      dragon_fire_spritesheet_5: -6584304685453161462
+      dragon_fire_spritesheet_6: 8668901960701065088
+      dragon_fire_spritesheet_7: 7781552488393723032
+      dragon_fire_spritesheet_8: 5461186580123381440
+      dragon_fire_spritesheet_9: 4018702994868348758
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

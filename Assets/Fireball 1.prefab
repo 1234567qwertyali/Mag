@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9034897004906746342}
   - component: {fileID: -1515407710387817576}
   - component: {fileID: -8620823714448071468}
+  - component: {fileID: 7111998922884091983}
   m_Layer: 0
   m_Name: Fireball 1
   m_TagString: Untagged
@@ -27,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2798366291964830979}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.03143178, y: -0.03400803, z: 0.13194872, w: -0.99017423}
-  m_LocalPosition: {x: 2.34, y: 0.85, z: 0.08}
-  m_LocalScale: {x: 0.13409537, y: 0.13192065, z: 1}
+  m_LocalRotation: {x: -0.03491462, y: -0.030421577, z: 0.024441093, w: -0.9986281}
+  m_LocalPosition: {x: -7.546762, y: 0.67046463, z: 0.0128}
+  m_LocalScale: {x: 0.9569688, y: 0.78847665, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 4.084, y: 3.394, z: 344.94}
+  m_LocalEulerAnglesHint: {x: 4.084, y: 3.394, z: 357.317}
 --- !u!212 &9034897004906746342
 SpriteRenderer:
   serializedVersion: 2
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 3920117946027786876, guid: 9a78c1a435f4d764d887dc54d52f879b, type: 3}
+  m_Sprite: {fileID: -3502103990981210533, guid: b018273bdd9353d4282465eff04cd4d2, type: 3}
   m_Color: {r: 0.9339623, g: 0.8943129, b: 0.8943129, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,8 +128,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0000009536743, y: 0}
-  m_Radius: 6.17
+  m_Offset: {x: -0.6300422, y: -0.020992316}
+  m_Radius: 0.59915495
 --- !u!114 &-8620823714448071468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +142,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b8e1b49704a4d4f87372057929fa7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fireball2D
-  speed: 8
   damage: 30
-  lifeTime: 5
+  speed: 8
+  lifetime: 5
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  hitEffect: {fileID: 0}
+  hitEffectLifetime: 1.5
+--- !u!95 &7111998922884091983
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2798366291964830979}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8ad0e2e064f0ea4faa86112ac0c3cb8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

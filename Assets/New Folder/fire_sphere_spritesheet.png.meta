@@ -1,0 +1,1521 @@
+fileFormatVersion: 2
+guid: 96cecbe2ab049dd4caef5da8080cfc6c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7564408861346464672
+    second: fire_sphere_spritesheet_0
+  - first:
+      213: -2493231661308023037
+    second: fire_sphere_spritesheet_1
+  - first:
+      213: -8864639080990349573
+    second: fire_sphere_spritesheet_2
+  - first:
+      213: -8180158753560949322
+    second: fire_sphere_spritesheet_3
+  - first:
+      213: 4602657397037343811
+    second: fire_sphere_spritesheet_4
+  - first:
+      213: -3503857439190020565
+    second: fire_sphere_spritesheet_5
+  - first:
+      213: 8397327430096986482
+    second: fire_sphere_spritesheet_6
+  - first:
+      213: 4009251603559554219
+    second: fire_sphere_spritesheet_7
+  - first:
+      213: 983683719232295085
+    second: fire_sphere_spritesheet_8
+  - first:
+      213: -5740049583643158141
+    second: fire_sphere_spritesheet_9
+  - first:
+      213: 6409486512608272435
+    second: fire_sphere_spritesheet_10
+  - first:
+      213: 7283393031070312483
+    second: fire_sphere_spritesheet_11
+  - first:
+      213: 2337545628452943462
+    second: fire_sphere_spritesheet_12
+  - first:
+      213: -6548470208417528914
+    second: fire_sphere_spritesheet_13
+  - first:
+      213: -7354781785461066959
+    second: fire_sphere_spritesheet_14
+  - first:
+      213: -8951661918687601736
+    second: fire_sphere_spritesheet_15
+  - first:
+      213: 8342980014545647731
+    second: fire_sphere_spritesheet_16
+  - first:
+      213: 7388134901260316142
+    second: fire_sphere_spritesheet_17
+  - first:
+      213: 4125220270358634119
+    second: fire_sphere_spritesheet_18
+  - first:
+      213: -6154360599818613981
+    second: fire_sphere_spritesheet_19
+  - first:
+      213: -2085935617958006157
+    second: fire_sphere_spritesheet_20
+  - first:
+      213: -5790165902655190984
+    second: fire_sphere_spritesheet_21
+  - first:
+      213: 9213251399161162343
+    second: fire_sphere_spritesheet_22
+  - first:
+      213: -5733419326232588717
+    second: fire_sphere_spritesheet_23
+  - first:
+      213: 9217852987188393180
+    second: fire_sphere_spritesheet_24
+  - first:
+      213: -3181281452802649605
+    second: fire_sphere_spritesheet_25
+  - first:
+      213: -5214679874400957527
+    second: fire_sphere_spritesheet_26
+  - first:
+      213: -447476996578517381
+    second: fire_sphere_spritesheet_27
+  - first:
+      213: 4797441489077477650
+    second: fire_sphere_spritesheet_28
+  - first:
+      213: 1064648077564276849
+    second: fire_sphere_spritesheet_29
+  - first:
+      213: 3968827899149924805
+    second: fire_sphere_spritesheet_30
+  - first:
+      213: -132845280649340737
+    second: fire_sphere_spritesheet_31
+  - first:
+      213: -3777901873465202766
+    second: fire_sphere_spritesheet_32
+  - first:
+      213: -6732519787727261282
+    second: fire_sphere_spritesheet_33
+  - first:
+      213: 5894790459383734049
+    second: fire_sphere_spritesheet_34
+  - first:
+      213: -4205628871297018959
+    second: fire_sphere_spritesheet_35
+  - first:
+      213: 780477097465766322
+    second: fire_sphere_spritesheet_36
+  - first:
+      213: 5013185262467740780
+    second: fire_sphere_spritesheet_37
+  - first:
+      213: -47318508743699669
+    second: fire_sphere_spritesheet_38
+  - first:
+      213: 1441941170922603347
+    second: fire_sphere_spritesheet_39
+  - first:
+      213: 1756843205381194259
+    second: fire_sphere_spritesheet_40
+  - first:
+      213: 1347129358626765668
+    second: fire_sphere_spritesheet_41
+  - first:
+      213: 340416404586296429
+    second: fire_sphere_spritesheet_42
+  - first:
+      213: 6411507603317930159
+    second: fire_sphere_spritesheet_43
+  - first:
+      213: -1871750745306156394
+    second: fire_sphere_spritesheet_44
+  - first:
+      213: -534367047107320365
+    second: fire_sphere_spritesheet_45
+  - first:
+      213: -5258537740060918185
+    second: fire_sphere_spritesheet_46
+  - first:
+      213: -6555915312581822424
+    second: fire_sphere_spritesheet_47
+  - first:
+      213: -2547146452328711620
+    second: fire_sphere_spritesheet_48
+  - first:
+      213: -1588767789505049774
+    second: fire_sphere_spritesheet_49
+  - first:
+      213: 7655316437584732904
+    second: fire_sphere_spritesheet_50
+  - first:
+      213: 1716575833471296573
+    second: fire_sphere_spritesheet_51
+  - first:
+      213: -2484592998430352689
+    second: fire_sphere_spritesheet_52
+  - first:
+      213: -1609955590740858246
+    second: fire_sphere_spritesheet_53
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 1603
+        width: 305
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06c70a3f732d50790800000000000000
+      internalID: -7564408861346464672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 1976
+        width: 60
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30f6af48303466dd0800000000000000
+      internalID: -2493231661308023037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 2032
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf6668309b97af480800000000000000
+      internalID: -8864639080990349573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 1992
+        width: 46
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bd82b734fc3a7e80800000000000000
+      internalID: -8180158753560949322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 2032
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3442c35448cefdf30800000000000000
+      internalID: 4602657397037343811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 2033
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2e0879293ccf5fc0800000000000000
+      internalID: -3503857439190020565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1761
+        y: 2012
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27123958ecc498470800000000000000
+      internalID: 8397327430096986482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1925
+        y: 2037
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bac155d6719b3a730800000000000000
+      internalID: 4009251603559554219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 1601
+        width: 346
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da01d20812fb6ad00800000000000000
+      internalID: 983683719232295085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 2016
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38912d5d05f3750b0800000000000000
+      internalID: -5740049583643158141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 2014
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3306ca8360213f850800000000000000
+      internalID: 6409486512608272435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 2015
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32860886f5fc31560800000000000000
+      internalID: 7283393031070312483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 1423
+        y: 2018
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 666743e3d51a07020800000000000000
+      internalID: 2337545628452943462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1621
+        y: 1609
+        width: 317
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea38b0d6a092f15a0800000000000000
+      internalID: -6548470208417528914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1997
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1337415fee09ee990800000000000000
+      internalID: -7354781785461066959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 1999
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bbdb33b9ee45c380800000000000000
+      internalID: -8951661918687601736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1605
+        width: 329
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3783d27ce1838c370800000000000000
+      internalID: 8342980014545647731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1784
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eed69467c8de78660800000000000000
+      internalID: 7388134901260316142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1721
+        width: 50
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78e97f2caf9bf3930800000000000000
+      internalID: 4125220270358634119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 1731
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32bc62444a1579aa0800000000000000
+      internalID: -6154360599818613981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 1738
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37237437b944d03e0800000000000000
+      internalID: -2085935617958006157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 1750
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83888a50ac235afa0800000000000000
+      internalID: -5790165902655190984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 1721
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a2f59655b0cdf70800000000000000
+      internalID: 9213251399161162343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 1725
+        width: 21
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35e0c8fef7dce60b0800000000000000
+      internalID: -5733419326232588717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 1605
+        y: 1731
+        width: 20
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd4332d14746cef70800000000000000
+      internalID: 9217852987188393180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 1940
+        y: 1727
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf1d823bf51d9d3d0800000000000000
+      internalID: -3181281452802649605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 1733
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9abc3f4684cb1a7b0800000000000000
+      internalID: -5214679874400957527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 1093
+        width: 355
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7e57cdda0e3ac9f0800000000000000
+      internalID: -447476996578517381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 1091
+        width: 353
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2112f2bcd9fe39240800000000000000
+      internalID: 4797441489077477650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 1227
+        width: 28
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 170750a29c366ce00800000000000000
+      internalID: 1064648077564276849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 1092
+        width: 321
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c9bd7f42fb141730800000000000000
+      internalID: 3968827899149924805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1266
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb81fcccbe9082ef0800000000000000
+      internalID: -132845280649340737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 1606
+        y: 1240
+        width: 17
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b7e2d32342329bc0800000000000000
+      internalID: -3777901873465202766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 1627
+        y: 1093
+        width: 331
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e917a396ce84192a0800000000000000
+      internalID: -6732519787727261282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 580
+        width: 329
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12fddecd0b08ec150800000000000000
+      internalID: 5894790459383734049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 1011
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b3d63de2da92a5c0800000000000000
+      internalID: -4205628871297018959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 575
+        width: 338
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b166c5f8cfc4da00800000000000000
+      internalID: 780477097465766322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 580
+        width: 342
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c64fc9a6f69629540800000000000000
+      internalID: 5013185262467740780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 584
+        width: 343
+        height: 431
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b23d7072114e75ff0800000000000000
+      internalID: -47318508743699669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 1774
+        y: 1011
+        width: 27
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3534adfeaddc20410800000000000000
+      internalID: 1441941170922603347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 776
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3120ece469f816810800000000000000
+      internalID: 1756843205381194259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 794
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46bb277a307f1b210800000000000000
+      internalID: 1347129358626765668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 721
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d64f4179ae669b400800000000000000
+      internalID: 340416404586296429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 1597
+        y: 736
+        width: 15
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa83b7212304af850800000000000000
+      internalID: 6411507603317930159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 708
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69234f53d943606e0800000000000000
+      internalID: -1871750745306156394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 69
+        width: 358
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d56e79700c8598f0800000000000000
+      internalID: -534367047107320365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 501
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75efead49cbe507b0800000000000000
+      internalID: -5258537740060918185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 484
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 828340802c5b405a0800000000000000
+      internalID: -6555915312581822424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 74
+        width: 344
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3afc060cc7b6acd0800000000000000
+      internalID: -2547146452328711620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 506
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25b08f3fc1093f9e0800000000000000
+      internalID: -1588767789505049774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 1742
+        y: 481
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e262798db52d3a60800000000000000
+      internalID: 7655316437584732904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 72
+        width: 342
+        height: 431
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d34a31030a082d710800000000000000
+      internalID: 1716575833471296573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 1857
+        y: 490
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcad225f4d3f48dd0800000000000000
+      internalID: -2484592998430352689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_sphere_spritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 68
+        width: 373
+        height: 419
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7aacbd8be948a9e0800000000000000
+      internalID: -1609955590740858246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      fire_sphere_spritesheet_0: -7564408861346464672
+      fire_sphere_spritesheet_1: -2493231661308023037
+      fire_sphere_spritesheet_10: 6409486512608272435
+      fire_sphere_spritesheet_11: 7283393031070312483
+      fire_sphere_spritesheet_12: 2337545628452943462
+      fire_sphere_spritesheet_13: -6548470208417528914
+      fire_sphere_spritesheet_14: -7354781785461066959
+      fire_sphere_spritesheet_15: -8951661918687601736
+      fire_sphere_spritesheet_16: 8342980014545647731
+      fire_sphere_spritesheet_17: 7388134901260316142
+      fire_sphere_spritesheet_18: 4125220270358634119
+      fire_sphere_spritesheet_19: -6154360599818613981
+      fire_sphere_spritesheet_2: -8864639080990349573
+      fire_sphere_spritesheet_20: -2085935617958006157
+      fire_sphere_spritesheet_21: -5790165902655190984
+      fire_sphere_spritesheet_22: 9213251399161162343
+      fire_sphere_spritesheet_23: -5733419326232588717
+      fire_sphere_spritesheet_24: 9217852987188393180
+      fire_sphere_spritesheet_25: -3181281452802649605
+      fire_sphere_spritesheet_26: -5214679874400957527
+      fire_sphere_spritesheet_27: -447476996578517381
+      fire_sphere_spritesheet_28: 4797441489077477650
+      fire_sphere_spritesheet_29: 1064648077564276849
+      fire_sphere_spritesheet_3: -8180158753560949322
+      fire_sphere_spritesheet_30: 3968827899149924805
+      fire_sphere_spritesheet_31: -132845280649340737
+      fire_sphere_spritesheet_32: -3777901873465202766
+      fire_sphere_spritesheet_33: -6732519787727261282
+      fire_sphere_spritesheet_34: 5894790459383734049
+      fire_sphere_spritesheet_35: -4205628871297018959
+      fire_sphere_spritesheet_36: 780477097465766322
+      fire_sphere_spritesheet_37: 5013185262467740780
+      fire_sphere_spritesheet_38: -47318508743699669
+      fire_sphere_spritesheet_39: 1441941170922603347
+      fire_sphere_spritesheet_4: 4602657397037343811
+      fire_sphere_spritesheet_40: 1756843205381194259
+      fire_sphere_spritesheet_41: 1347129358626765668
+      fire_sphere_spritesheet_42: 340416404586296429
+      fire_sphere_spritesheet_43: 6411507603317930159
+      fire_sphere_spritesheet_44: -1871750745306156394
+      fire_sphere_spritesheet_45: -534367047107320365
+      fire_sphere_spritesheet_46: -5258537740060918185
+      fire_sphere_spritesheet_47: -6555915312581822424
+      fire_sphere_spritesheet_48: -2547146452328711620
+      fire_sphere_spritesheet_49: -1588767789505049774
+      fire_sphere_spritesheet_5: -3503857439190020565
+      fire_sphere_spritesheet_50: 7655316437584732904
+      fire_sphere_spritesheet_51: 1716575833471296573
+      fire_sphere_spritesheet_52: -2484592998430352689
+      fire_sphere_spritesheet_53: -1609955590740858246
+      fire_sphere_spritesheet_6: 8397327430096986482
+      fire_sphere_spritesheet_7: 4009251603559554219
+      fire_sphere_spritesheet_8: 983683719232295085
+      fire_sphere_spritesheet_9: -5740049583643158141
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
